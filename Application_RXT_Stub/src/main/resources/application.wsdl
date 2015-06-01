@@ -1,0 +1,475 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns5="http://services.get.application.dependencies.governance.carbon.wso2.org" xmlns:ns6="http://api.registry.carbon.wso2.org/xsd" xmlns:ns7="http://exception.api.governance.carbon.wso2.org/xsd" xmlns:ns8="http://exceptions.core.registry.carbon.wso2.org/xsd" xmlns:ns2="http://services.update.application.governance.carbon.wso2.org" xmlns:ns1="http://services.get.application.governance.carbon.wso2.org" xmlns:ns4="http://services.get.application.artifactids.governance.carbon.wso2.org" xmlns:ns3="http://services.delete.application.governance.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ws.apache.org/axis2" xmlns:ns0="http://services.add.application.governance.carbon.wso2.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2234="http://exception.api.governance.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.add.application.governance.carbon.wso2.org">
+            <xs:import namespace="http://exception.api.governance.carbon.wso2.org/xsd"></xs:import>
+            <xs:element name="addapplicationServiceGovernanceException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GovernanceException" nillable="true" type="ax2234:GovernanceException"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addapplication">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="info" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addapplicationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2234="http://exception.api.governance.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.get.application.governance.carbon.wso2.org">
+            <xs:import namespace="http://exception.api.governance.carbon.wso2.org/xsd"></xs:import>
+            <xs:element name="getapplicationServiceGovernanceException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GovernanceException" nillable="true" type="ax2234:GovernanceException"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getapplication">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="artifactId" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getapplicationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2234="http://exception.api.governance.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.update.application.governance.carbon.wso2.org">
+            <xs:import namespace="http://exception.api.governance.carbon.wso2.org/xsd"></xs:import>
+            <xs:element name="updateapplicationServiceGovernanceException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GovernanceException" nillable="true" type="ax2234:GovernanceException"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateapplication">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="updatedInfo" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateapplicationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2234="http://exception.api.governance.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.delete.application.governance.carbon.wso2.org">
+            <xs:import namespace="http://exception.api.governance.carbon.wso2.org/xsd"></xs:import>
+            <xs:element name="deleteapplicationServiceGovernanceException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GovernanceException" nillable="true" type="ax2234:GovernanceException"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteapplication">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="artifactId" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteapplicationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2234="http://exception.api.governance.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.get.application.artifactids.governance.carbon.wso2.org">
+            <xs:import namespace="http://exception.api.governance.carbon.wso2.org/xsd"></xs:import>
+            <xs:element name="getapplicationArtifactIDsServiceGovernanceException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GovernanceException" nillable="true" type="ax2234:GovernanceException"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getapplicationArtifactIDs">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getapplicationArtifactIDsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2234="http://exception.api.governance.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.get.application.dependencies.governance.carbon.wso2.org">
+            <xs:import namespace="http://exception.api.governance.carbon.wso2.org/xsd"></xs:import>
+            <xs:element name="getapplicationDependenciesServiceGovernanceException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GovernanceException" nillable="true" type="ax2234:GovernanceException"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getapplicationDependencies">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="artifactId" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getapplicationDependenciesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://api.registry.carbon.wso2.org/xsd">
+            <xs:complexType name="RegistryException">
+                <xs:sequence></xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2233="http://exceptions.core.registry.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exception.api.governance.carbon.wso2.org/xsd">
+            <xs:import namespace="http://exceptions.core.registry.carbon.wso2.org/xsd"></xs:import>
+            <xs:complexType name="GovernanceException">
+                <xs:complexContent>
+                    <xs:extension base="ax2233:RegistryException">
+                        <xs:sequence></xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax2232="http://api.registry.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exceptions.core.registry.carbon.wso2.org/xsd">
+            <xs:import namespace="http://api.registry.carbon.wso2.org/xsd"></xs:import>
+            <xs:complexType name="RegistryException">
+                <xs:complexContent>
+                    <xs:extension base="ax2232:RegistryException">
+                        <xs:sequence></xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="updateapplicationRequest">
+        <wsdl:part name="parameters" element="ns2:updateapplication"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateapplicationResponse">
+        <wsdl:part name="parameters" element="ns2:updateapplicationResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateapplicationServiceGovernanceException">
+        <wsdl:part name="parameters" element="ns2:updateapplicationServiceGovernanceException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addapplicationRequest">
+        <wsdl:part name="parameters" element="ns0:addapplication"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addapplicationResponse">
+        <wsdl:part name="parameters" element="ns0:addapplicationResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addapplicationServiceGovernanceException">
+        <wsdl:part name="parameters" element="ns0:addapplicationServiceGovernanceException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getapplicationRequest">
+        <wsdl:part name="parameters" element="ns1:getapplication"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getapplicationResponse">
+        <wsdl:part name="parameters" element="ns1:getapplicationResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getapplicationServiceGovernanceException">
+        <wsdl:part name="parameters" element="ns1:getapplicationServiceGovernanceException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getapplicationDependenciesRequest">
+        <wsdl:part name="parameters" element="ns5:getapplicationDependencies"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getapplicationDependenciesResponse">
+        <wsdl:part name="parameters" element="ns5:getapplicationDependenciesResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getapplicationDependenciesServiceGovernanceException">
+        <wsdl:part name="parameters" element="ns5:getapplicationDependenciesServiceGovernanceException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getapplicationArtifactIDsRequest">
+        <wsdl:part name="parameters" element="ns4:getapplicationArtifactIDs"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getapplicationArtifactIDsResponse">
+        <wsdl:part name="parameters" element="ns4:getapplicationArtifactIDsResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getapplicationArtifactIDsServiceGovernanceException">
+        <wsdl:part name="parameters" element="ns4:getapplicationArtifactIDsServiceGovernanceException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteapplicationRequest">
+        <wsdl:part name="parameters" element="ns3:deleteapplication"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteapplicationResponse">
+        <wsdl:part name="parameters" element="ns3:deleteapplicationResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteapplicationServiceGovernanceException">
+        <wsdl:part name="parameters" element="ns3:deleteapplicationServiceGovernanceException"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="applicationPortType">
+        <wsdl:operation name="updateapplication">
+            <wsdl:input message="tns:updateapplicationRequest" wsaw:Action="urn:updateapplication"></wsdl:input>
+            <wsdl:output message="tns:updateapplicationResponse" wsaw:Action="urn:updateapplicationResponse"></wsdl:output>
+            <wsdl:fault message="tns:updateapplicationServiceGovernanceException" name="updateapplicationServiceGovernanceException" wsaw:Action="urn:updateapplicationupdateapplicationServiceGovernanceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addapplication">
+            <wsdl:input message="tns:addapplicationRequest" wsaw:Action="urn:addapplication"></wsdl:input>
+            <wsdl:output message="tns:addapplicationResponse" wsaw:Action="urn:addapplicationResponse"></wsdl:output>
+            <wsdl:fault message="tns:addapplicationServiceGovernanceException" name="addapplicationServiceGovernanceException" wsaw:Action="urn:addapplicationaddapplicationServiceGovernanceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getapplication">
+            <wsdl:input message="tns:getapplicationRequest" wsaw:Action="urn:getapplication"></wsdl:input>
+            <wsdl:output message="tns:getapplicationResponse" wsaw:Action="urn:getapplicationResponse"></wsdl:output>
+            <wsdl:fault message="tns:getapplicationServiceGovernanceException" name="getapplicationServiceGovernanceException" wsaw:Action="urn:getapplicationgetapplicationServiceGovernanceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getapplicationDependencies">
+            <wsdl:input message="tns:getapplicationDependenciesRequest" wsaw:Action="urn:getapplicationDependencies"></wsdl:input>
+            <wsdl:output message="tns:getapplicationDependenciesResponse" wsaw:Action="urn:getapplicationDependenciesResponse"></wsdl:output>
+            <wsdl:fault message="tns:getapplicationDependenciesServiceGovernanceException" name="getapplicationDependenciesServiceGovernanceException" wsaw:Action="urn:getapplicationDependenciesgetapplicationDependenciesServiceGovernanceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getapplicationArtifactIDs">
+            <wsdl:input message="tns:getapplicationArtifactIDsRequest" wsaw:Action="urn:getapplicationArtifactIDs"></wsdl:input>
+            <wsdl:output message="tns:getapplicationArtifactIDsResponse" wsaw:Action="urn:getapplicationArtifactIDsResponse"></wsdl:output>
+            <wsdl:fault message="tns:getapplicationArtifactIDsServiceGovernanceException" name="getapplicationArtifactIDsServiceGovernanceException" wsaw:Action="urn:getapplicationArtifactIDsgetapplicationArtifactIDsServiceGovernanceException"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteapplication">
+            <wsdl:input message="tns:deleteapplicationRequest" wsaw:Action="urn:deleteapplication"></wsdl:input>
+            <wsdl:output message="tns:deleteapplicationResponse" wsaw:Action="urn:deleteapplicationResponse"></wsdl:output>
+            <wsdl:fault message="tns:deleteapplicationServiceGovernanceException" name="deleteapplicationServiceGovernanceException" wsaw:Action="urn:deleteapplicationdeleteapplicationServiceGovernanceException"></wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="applicationSoap11Binding" type="tns:applicationPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+        <wsdl:operation name="updateapplication">
+            <soap:operation soapAction="urn:updateapplication" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="updateapplicationServiceGovernanceException">
+                <soap:fault use="literal" name="updateapplicationServiceGovernanceException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addapplication">
+            <soap:operation soapAction="urn:addapplication" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="addapplicationServiceGovernanceException">
+                <soap:fault use="literal" name="addapplicationServiceGovernanceException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getapplication">
+            <soap:operation soapAction="urn:getapplication" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="getapplicationServiceGovernanceException">
+                <soap:fault use="literal" name="getapplicationServiceGovernanceException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getapplicationDependencies">
+            <soap:operation soapAction="urn:getapplicationDependencies" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="getapplicationDependenciesServiceGovernanceException">
+                <soap:fault use="literal" name="getapplicationDependenciesServiceGovernanceException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getapplicationArtifactIDs">
+            <soap:operation soapAction="urn:getapplicationArtifactIDs" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="getapplicationArtifactIDsServiceGovernanceException">
+                <soap:fault use="literal" name="getapplicationArtifactIDsServiceGovernanceException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteapplication">
+            <soap:operation soapAction="urn:deleteapplication" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+            <wsdl:fault name="deleteapplicationServiceGovernanceException">
+                <soap:fault use="literal" name="deleteapplicationServiceGovernanceException"></soap:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="applicationSoap12Binding" type="tns:applicationPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap12:binding>
+        <wsdl:operation name="updateapplication">
+            <soap12:operation soapAction="urn:updateapplication" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="updateapplicationServiceGovernanceException">
+                <soap12:fault use="literal" name="updateapplicationServiceGovernanceException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addapplication">
+            <soap12:operation soapAction="urn:addapplication" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="addapplicationServiceGovernanceException">
+                <soap12:fault use="literal" name="addapplicationServiceGovernanceException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getapplication">
+            <soap12:operation soapAction="urn:getapplication" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="getapplicationServiceGovernanceException">
+                <soap12:fault use="literal" name="getapplicationServiceGovernanceException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getapplicationDependencies">
+            <soap12:operation soapAction="urn:getapplicationDependencies" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="getapplicationDependenciesServiceGovernanceException">
+                <soap12:fault use="literal" name="getapplicationDependenciesServiceGovernanceException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getapplicationArtifactIDs">
+            <soap12:operation soapAction="urn:getapplicationArtifactIDs" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="getapplicationArtifactIDsServiceGovernanceException">
+                <soap12:fault use="literal" name="getapplicationArtifactIDsServiceGovernanceException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteapplication">
+            <soap12:operation soapAction="urn:deleteapplication" style="document"></soap12:operation>
+            <wsdl:input>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"></soap12:body>
+            </wsdl:output>
+            <wsdl:fault name="deleteapplicationServiceGovernanceException">
+                <soap12:fault use="literal" name="deleteapplicationServiceGovernanceException"></soap12:fault>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="applicationHttpBinding" type="tns:applicationPortType">
+        <http:binding verb="POST"></http:binding>
+        <wsdl:operation name="updateapplication">
+            <http:operation location="updateapplication"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addapplication">
+            <http:operation location="addapplication"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getapplication">
+            <http:operation location="getapplication"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getapplicationDependencies">
+            <http:operation location="getapplicationDependencies"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getapplicationArtifactIDs">
+            <http:operation location="getapplicationArtifactIDs"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteapplication">
+            <http:operation location="deleteapplication"></http:operation>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"></mime:content>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="application">
+        <wsdl:port name="applicationHttpsSoap11Endpoint" binding="tns:applicationSoap11Binding">
+            <soap:address location="https://10.100.0.101:9443/services/application.applicationHttpsSoap11Endpoint/"></soap:address>
+        </wsdl:port>
+        <wsdl:port name="applicationHttpsSoap12Endpoint" binding="tns:applicationSoap12Binding">
+            <soap12:address location="https://10.100.0.101:9443/services/application.applicationHttpsSoap12Endpoint/"></soap12:address>
+        </wsdl:port>
+        <wsdl:port name="applicationHttpsEndpoint" binding="tns:applicationHttpBinding">
+            <http:address location="https://10.100.0.101:9443/services/application.applicationHttpsEndpoint/"></http:address>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

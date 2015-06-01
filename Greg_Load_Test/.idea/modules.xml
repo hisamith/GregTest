@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Application_RXT_Stub/Application_RXT_Stub.iml" filepath="$PROJECT_DIR$/../Application_RXT_Stub/Application_RXT_Stub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../GregWebServices/GregWebServices.iml" filepath="$PROJECT_DIR$/../GregWebServices/GregWebServices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Greg_Load_Test.iml" filepath="$PROJECT_DIR$/Greg_Load_Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../JaxRSWebApplication/app008.iml" filepath="$PROJECT_DIR$/../JaxRSWebApplication/app008.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../GregWebServiceStub/org.wso2.appfactory.gregwebservice.stub.iml" filepath="$PROJECT_DIR$/../GregWebServiceStub/org.wso2.appfactory.gregwebservice.stub.iml" />
+    </modules>
+  </component>
+</project>

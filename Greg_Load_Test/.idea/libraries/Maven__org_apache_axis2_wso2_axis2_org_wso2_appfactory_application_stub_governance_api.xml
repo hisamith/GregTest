@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.axis2.wso2:axis2:org.wso2.appfactory.application.stub.governance.api">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/axis2/wso2/axis2/org.wso2.appfactory.application.stub.governance.api/axis2-org.wso2.appfactory.application.stub.governance.api.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/axis2/wso2/axis2/org.wso2.appfactory.application.stub.governance.api/axis2-org.wso2.appfactory.application.stub.governance.api-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/axis2/wso2/axis2/org.wso2.appfactory.application.stub.governance.api/axis2-org.wso2.appfactory.application.stub.governance.api-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

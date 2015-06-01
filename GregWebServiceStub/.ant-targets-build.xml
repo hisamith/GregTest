@@ -1,0 +1,12 @@
+clean
+compile.src
+compile.test
+echo.classpath.problem
+init
+jar.all
+jar.client
+jar.server
+make.repo
+pre.compile.test
+run.test
+start.server
