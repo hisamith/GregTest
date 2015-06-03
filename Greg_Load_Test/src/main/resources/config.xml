@@ -22,7 +22,7 @@
     <tenant_domain_postfix_start_number>1</tenant_domain_postfix_start_number>
     <application_postfix_start_number>1</application_postfix_start_number>
     <webappname>javaapp11-default-SNAPSHOT</webappname>
-    <no_of_tenants_to_load>10</no_of_tenants_to_load>
+    <no_of_tenants_to_load>20</no_of_tenants_to_load>
     <tenant_create_sleep_time>30000</tenant_create_sleep_time>
     <application_create_sleep_time>10000</application_create_sleep_time>
     <tenant_load_sleep_time>10000</tenant_load_sleep_time>

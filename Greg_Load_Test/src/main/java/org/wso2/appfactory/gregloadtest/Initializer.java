@@ -24,7 +24,7 @@ public class Initializer {
 			long tenant_create_sleep_time = Long.parseLong(reader.getProperty("tenant_create_sleep_time"));
 			long application_create_sleep_time = Long.parseLong(reader.getProperty("application_create_sleep_time"));
 
-			for (int i = tenant_domain_postfix_start_number; i <= tenant_domain_postfix_end_number; i++) {
+			for (int i = tenant_domain_postfix_start_number; i < tenant_domain_postfix_end_number; i++) {
 				TenantInfoBean bean = new TenantInfoBean();
 				populateTenantInfoBean(bean, i);
 				try {
@@ -46,8 +46,8 @@ public class Initializer {
 				Thread.sleep(tenant_create_sleep_time);
 			}
 
-			for (int i = tenant_domain_postfix_start_number; i <= tenant_domain_postfix_end_number; i++) {
-				for (int j = application_postfix_start_number; j <= application_postfix_end_number; j++) {
+			for (int i = tenant_domain_postfix_start_number; i < tenant_domain_postfix_end_number; i++) {
+				for (int j = application_postfix_start_number; j < application_postfix_end_number; j++) {
 					applicationManager.createApplication(getTenantDomain(i) + "_" + reader.getProperty("application_key_prefix") + j,
 					                                     getTenantDomain(i));
 				}

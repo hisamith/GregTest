@@ -44,11 +44,25 @@ public class GregService extends AbstractAdmin {
 			long end = System.currentTimeMillis();
 
 			long timespent = end - start;
-			log.info("Time in milliseconds to get artifact for application : " + applicationKey + ", tenantDomain : " + tenantDomain + " : " + timespent);
+			log.info("************** Time in milliseconds to get artifact for application : " + applicationKey + ", tenantDomain : " + tenantDomain + " : " + timespent);
 
+			long startGetAttribute = System.currentTimeMillis();
+
+			String applicationKeyRetrieved = null;
 			if (artifact != null) {
-				return artifact.getAttribute(Constants.RXT_KEY_APPINFO_KEY);
+				applicationKeyRetrieved = artifact.getAttribute(Constants.RXT_KEY_APPINFO_KEY);
 			}
+
+			long endGetAttribute = System.currentTimeMillis();
+
+			long timespentForGetAttribute = endGetAttribute - startGetAttribute;
+			log.info("############## Time in milliseconds to get attribute of the application : " + applicationKey + ", tenantDomain : " + tenantDomain + " : " + timespentForGetAttribute);
+
+			if(!applicationKey.equals(applicationKeyRetrieved)){
+				log.error("Application key mismatch.. Error... ################################");
+			}
+
+			return timespent + "," + timespentForGetAttribute;
 
 		} catch (Exception e) {
 			log.error("Error while getting the user registry, ", e);

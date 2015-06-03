@@ -22,24 +22,32 @@ public class Client {
 			int tenant_domain_to_load_postfix_end_number = tenant_domain_postfix_start_number + no_of_tenants_to_load;
 			int application_postfix_end_number = application_postfix_start_number + no_of_applications;
 			TenantManager tenantManager = new TenantManager();
-			long sleeptime = Long.parseLong(reader.getProperty("sleeptime"));
+			long tenant_load_sleep_time = Long.parseLong(reader.getProperty("tenant_load_sleep_time"));
 
-			for (int i = tenant_domain_postfix_start_number; i <= tenant_domain_to_load_postfix_end_number; i++) {
+			for (int i = tenant_domain_postfix_start_number; i < tenant_domain_to_load_postfix_end_number; i++) {
 				tenantManager.loadTenant(Initializer.getTenantDomain(i));
-				Thread.sleep(sleeptime);
+				Thread.sleep(tenant_load_sleep_time);
 			}
 
-			for (int i = tenant_domain_postfix_start_number; i <= tenant_domain_to_load_postfix_end_number; i++) {
-				for (int j = application_postfix_start_number; j <= application_postfix_end_number; j++) {
+			long timeForGetArtifact = 0;
+			long timeForGetAttribute = 0;
+
+			for (int i = tenant_domain_postfix_start_number; i < tenant_domain_to_load_postfix_end_number; i++) {
+				for (int j = application_postfix_start_number; j < application_postfix_end_number; j++) {
 					String applicationKey = Initializer.getTenantDomain(i) + "_" + reader.getProperty("application_key_prefix") + j;
-					String artifactApplicationKey = applicationManager.getArtifact(applicationKey,
+					String result = applicationManager.getArtifact(applicationKey,
 					                                                               Initializer.getTenantDomain(i));
-					if(!applicationKey.equals(artifactApplicationKey)){
-						System.err.println("Application key doesn't map.");
-						System.out.println("Application key is : " + applicationKey);
-					}
+					String[] resultArr = result.split(",");
+					timeForGetArtifact += Long.parseLong(resultArr[0]);
+					timeForGetAttribute += Long.parseLong(resultArr[1]);
 				}
 			}
+
+			timeForGetArtifact = timeForGetArtifact/(no_of_tenants_to_load*no_of_applications);
+			timeForGetAttribute = timeForGetAttribute/(no_of_tenants_to_load*no_of_applications);
+
+			System.out.println("Time to get artifact : "  + timeForGetArtifact);
+			System.out.println("Time to get artifact attribute : "  + timeForGetAttribute);
 
 		} catch (Exception e){
 			e.printStackTrace();
