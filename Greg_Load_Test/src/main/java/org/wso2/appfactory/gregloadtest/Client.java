@@ -25,7 +25,9 @@ public class Client {
 			long tenant_load_sleep_time = Long.parseLong(reader.getProperty("tenant_load_sleep_time"));
 
 			for (int i = tenant_domain_postfix_start_number; i < tenant_domain_to_load_postfix_end_number; i++) {
-				tenantManager.loadTenant(Initializer.getTenantDomain(i));
+				try {
+					tenantManager.loadTenant(Initializer.getTenantDomain(i));
+				} catch (Exception e){}
 				Thread.sleep(tenant_load_sleep_time);
 			}
 
@@ -35,8 +37,16 @@ public class Client {
 			for (int i = tenant_domain_postfix_start_number; i < tenant_domain_to_load_postfix_end_number; i++) {
 				for (int j = application_postfix_start_number; j < application_postfix_end_number; j++) {
 					String applicationKey = Initializer.getTenantDomain(i) + "_" + reader.getProperty("application_key_prefix") + j;
-					String result = applicationManager.getArtifact(applicationKey,
-					                                                               Initializer.getTenantDomain(i));
+					String result;
+					try {
+						result = applicationManager.getArtifact(applicationKey, Initializer.getTenantDomain(i));
+					} catch (Exception e){
+						try {
+							result = applicationManager.getArtifact(applicationKey, Initializer.getTenantDomain(i));
+						} catch (Exception e2){
+							result = applicationManager.getArtifact(applicationKey, Initializer.getTenantDomain(i));
+						}
+					}
 					String[] resultArr = result.split(",");
 					timeForGetArtifact += Long.parseLong(resultArr[0]);
 					timeForGetAttribute += Long.parseLong(resultArr[1]);
