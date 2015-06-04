@@ -6,6 +6,7 @@ package org.wso2.appfactory.gregloadtest;
 
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.client.ServiceClient;
+import org.apache.axis2.transport.http.HTTPConstants;
 import org.apache.axis2.transport.http.HttpTransportProperties;
 import org.wso2.appfactory.gregwebservice.stub.GregServiceStub;
 import org.wso2.carbon.governance.generic.stub.ManageGenericArtifactServiceRegistryExceptionException;
@@ -27,6 +28,11 @@ public class ApplicationManager {
 					                                     + "/services/ManageGenericArtifactService");
 			gregServiceStub = new GregServiceStub(ConfigReader.getInstance().getProperty("greg_url")
 			                                      + "/services/GregService");
+			int timeOutInMilliSeconds = 5 * 60 * 1000;
+			manageGenericArtifactServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.SO_TIMEOUT, new Integer(timeOutInMilliSeconds));
+			manageGenericArtifactServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.CONNECTION_TIMEOUT, new Integer(timeOutInMilliSeconds));
+			gregServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.SO_TIMEOUT, new Integer(timeOutInMilliSeconds));
+			gregServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.CONNECTION_TIMEOUT, new Integer(timeOutInMilliSeconds));
 		} catch (AxisFault axisFault) {
 			axisFault.printStackTrace();
 		}
@@ -48,7 +54,7 @@ public class ApplicationManager {
 		                 "</application>" +
 		                 "</metadata>";
 
-		setAuthHeaders(userName);
+		setAuthHeaders(userName, manageGenericArtifactServiceStub._getServiceClient());
 
 		manageGenericArtifactServiceStub.addArtifact(ConfigReader.getInstance().getProperty("rxt_name"), content, null);
 	}
@@ -56,12 +62,11 @@ public class ApplicationManager {
 	public String getArtifact(String applicationKey, String tenantDomain)
 			throws RemoteException, ManageGenericArtifactServiceRegistryExceptionException {
 		String userName = getTenantAdminUserName(tenantDomain);
-		setAuthHeaders(userName);
+		setAuthHeaders(userName, gregServiceStub._getServiceClient());
 		return gregServiceStub.getAppInfoArtifact(applicationKey, tenantDomain, userName);
 	}
 
-	private void setAuthHeaders(String userName){
-		ServiceClient applicationServiceClient = manageGenericArtifactServiceStub._getServiceClient();
+	private void setAuthHeaders(String userName, ServiceClient client){
 
 		HttpTransportProperties.Authenticator basicAuthenticator = new HttpTransportProperties.Authenticator();
 		List<String> authSchemes = new ArrayList<String>();
@@ -71,8 +76,8 @@ public class ApplicationManager {
 		basicAuthenticator.setUsername(userName);
 		basicAuthenticator.setPassword(ConfigReader.getInstance().getProperty("tenant_admin_password"));
 		basicAuthenticator.setPreemptiveAuthentication(true);
-		applicationServiceClient.getOptions().setProperty(org.apache.axis2.transport.http.HTTPConstants.AUTHENTICATE, basicAuthenticator);
-		applicationServiceClient.getOptions().setProperty(org.apache.axis2.transport.http.HTTPConstants.CHUNKED, "false");
+		client.getOptions().setProperty(org.apache.axis2.transport.http.HTTPConstants.AUTHENTICATE, basicAuthenticator);
+		client.getOptions().setProperty(org.apache.axis2.transport.http.HTTPConstants.CHUNKED, "false");
 	}
 
 	private String getTenantAdminUserName(String tenantDomain){
