@@ -25,36 +25,12 @@
                     <datamodel>
                         <data name="checkItems">
                             <item name="Code Completed*" forEvent="Promote">
-                                <!--<permissions>
-                                    <permission roles=""/>
-                                </permissions>
-                                <validations>
-                                    <validation forEvent="" class="">
-                                        <parameter name="" value=""/>
-                                    </validation>
-                                </validations>-->
                             </item>
                             <item name="Design Review Done*" forEvent="">
                             </item>
                             <item name="Code Review Done*" forEvent="">
                             </item>
                         </data>
-
-			<data name="transitionExecution">
-                            <execution forEvent="Promote" class="org.wso2.carbon.appfactory.core.governance.lifecycle.AppFactoryLCExecutor">
-                            </execution>			
-                        </data>
-			<data name="transitionScripts">
-                            <js forEvent="Promote">
-                                <console function="doPromote">
-                                <script type="text/javascript">
-                                    doPromote = function() {
-                                        window.location = unescape("../resources/resource.jsp?region=region3%26item=resource_browser_menu%26path=/_system/governance/repository/applications");
-                                    }
-                                </script>
-                            </console>
-                            </js>
-                        </data>			
                     </datamodel>
                     <transition event="Promote" target="Testing"/>                  
                 </state>
@@ -66,114 +42,16 @@
                             <item name="Test Cases Passed*" forEvent="Promote">
                             </item>
                         </data>
-                        <data name="transitionExecution">
-                            <execution forEvent="Promote" class="org.wso2.carbon.appfactory.core.governance.lifecycle.AppFactoryLCExecutor">
-                            </execution>
-                            
-                            <execution forEvent="Demote" class="org.wso2.carbon.appfactory.core.governance.lifecycle.AppFactoryLCExecutor">
-                            </execution>			    
-                        </data>	
-                        			
-			<data name="transitionScripts">
-                            <js forEvent="Promote">
-                                <console function="doPromote">
-                                <script type="text/javascript">
-                                    doPromote = function() {
-                                        window.location = unescape("../resources/resource.jsp?region=region3%26item=resource_browser_menu%26path=/_system/governance/repository/applications");
-                                    }
-                                </script>
-                            </console>                          
-                            </js>
-                            <js forEvent="Demote">
-                                <console function="doDemote">
-                                <script type="text/javascript">
-                                    doPromote = function() {
-                                        window.location = unescape("../resources/resource.jsp?region=region3%26item=resource_browser_menu%26path=/_system/governance/repository/applications");
-                                    }
-                                </script>
-                            </console>
-                            </js>
-
-                        </data>			
-			
                     </datamodel>
                     <transition event="Promote" target="Production"/>
                     <transition event="Demote" target="Development"/>
                 </state>
-   <!--state id="Staging">
-                    <datamodel>
-                        <data name="checkItems">
-                            <item name="Automation Tests Passed*" forEvent="Promote">
-                            </item>
-                            <item name="Security Check*" forEvent="Promote">
-                            </item>
-                        </data>
-                        <data name="transitionExecution">
-                            <execution forEvent="Promote" class="org.wso2.carbon.appfactory.core.governance.lifecycle.AppFactoryLCExecutor">
-                            </execution>
-                            
-                            <execution forEvent="Demote" class="org.wso2.carbon.appfactory.core.governance.lifecycle.AppFactoryLCExecutor">
-                            </execution>			    
-                        </data>	
-                        			
-			<data name="transitionScripts">
-                            <js forEvent="Promote">
-                                <console function="doPromote">
-                                <script type="text/javascript">
-                                    doPromote = function() {
-                                        window.location = unescape("../resources/resource.jsp?region=region3%26item=resource_browser_menu%26path=/_system/governance/repository/applications");
-                                    }
-                                </script>
-                            </console>                          
-                            </js>
-                            <js forEvent="Demote">
-                                <console function="doDemote">
-                                <script type="text/javascript">
-                                    doPromote = function() {
-                                        window.location = unescape("../resources/resource.jsp?region=region3%26item=resource_browser_menu%26path=/_system/governance/repository/applications");
-                                    }
-                                </script>
-                            </console>
-                            </js>
-
-                        </data>			
-			
-                    </datamodel>
-                    <transition event="Promote" target="Production"/>
-                    <transition event="Demote" target="Testing"/>
-                </state-->
                 <state id="Production">  
                     <datamodel>
                         <data name="checkItems">
                             <item name="Verify no one is using the Application*" forEvent="">
                             </item>
                         </data>
-			<data name="transitionExecution">
-                            <execution forEvent="Retire" class="org.wso2.carbon.appfactory.core.governance.lifecycle.AppFactoryLCExecutor">
-                            </execution>		
-		            <execution forEvent="Demote" class="org.wso2.carbon.appfactory.core.governance.lifecycle.AppFactoryLCExecutor">
-                            </execution>								
-                        </data>
-			<data name="transitionScripts">
-                            <js forEvent="Retire">
-                                <console function="doRetire">
-                                <script type="text/javascript">
-                                    doPromote = function() {
-                                        window.location = unescape("../resources/resource.jsp?region=region3%26item=resource_browser_menu%26path=/_system/governance/repository/applications");
-                                    }
-                                </script>
-                            </console>
-                            </js>
-			    <js forEvent="Demote">
-                                <console function="doDemote">
-                                <script type="text/javascript">
-                                    doPromote = function() {
-                                        window.location = unescape("../resources/resource.jsp?region=region3%26item=resource_browser_menu%26path=/_system/governance/repository/applications");
-                                    }
-                                </script>
-                            </console>
-                            </js>
-                        </data>			
                     </datamodel>
                     <transition event="Demote" target="Testing"/>
                     <transition event="Retire" target="Retired"/>
