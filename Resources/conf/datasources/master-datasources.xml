@@ -55,10 +55,10 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://10.100.0.101:3306/prof_userstore?autoReconnect=true</url>
+                    <url>jdbc:log4jdbc:mysql://10.100.0.101:3306/prof_userstore?autoReconnect=true</url>
                     <username>root</username>
                     <password>root</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <driverClassName>net.sf.log4jdbc.DriverSpy</driverClassName>
                     <maxActive>150</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
@@ -76,10 +76,10 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://10.100.0.101:3306/prof_governance?autoReconnect=true</url>
+                    <url>jdbc:log4jdbc:mysql://10.100.0.101:3306/prof_governance?autoReconnect=true</url>
                     <username>root</username>
                     <password>root</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <driverClassName>net.sf.log4jdbc.DriverSpy</driverClassName>
                     <maxActive>150</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
@@ -102,10 +102,10 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://10.100.0.101:3306/prof_config?autoReconnect=true</url>
+                    <url>jdbc:log4jdbc:mysql://10.100.0.101:3306/prof_config?autoReconnect=true</url>
                     <username>root</username>
                     <password>root</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <driverClassName>net.sf.log4jdbc.DriverSpy</driverClassName>
                     <maxActive>150</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
@@ -130,10 +130,10 @@
                 </jndiConfig>
                 <definition type="RDBMS">
                     <configuration>
-                        <url>jdbc:mysql://10.100.0.101:3306/prof_Development?autoReconnect=true</url>
+                        <url>jdbc:log4jdbc:mysql://10.100.0.101:3306/prof_Development?autoReconnect=true</url>
                         <username>root</username>
                         <password>root</password>
-                        <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                        <driverClassName>net.sf.log4jdbc.DriverSpy</driverClassName>
                         <maxActive>50</maxActive>
                         <maxWait>60000</maxWait>
                         <testOnBorrow>true</testOnBorrow>
@@ -151,10 +151,10 @@
                 </jndiConfig>
                 <definition type="RDBMS">
                     <configuration>
-                        <url>jdbc:mysql://10.100.0.101:3306/prof_Testing?autoReconnect=true</url>
+                        <url>jdbc:log4jdbc:mysql://10.100.0.101:3306/prof_Testing?autoReconnect=true</url>
                         <username>root</username>
                         <password>root</password>
-                        <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                        <driverClassName>net.sf.log4jdbc.DriverSpy</driverClassName>
                         <maxActive>50</maxActive>
                         <maxWait>60000</maxWait>
                         <testOnBorrow>true</testOnBorrow>
@@ -172,10 +172,10 @@
                 </jndiConfig>
                 <definition type="RDBMS">
                     <configuration>
-                        <url>jdbc:mysql://10.100.0.101:3306/prof_Production?autoReconnect=true</url>
+                        <url>jdbc:log4jdbc:mysql://10.100.0.101:3306/prof_Production?autoReconnect=true</url>
                         <username>root</username>
                         <password>root</password>
-                        <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                        <driverClassName>net.sf.log4jdbc.DriverSpy</driverClassName>
                         <maxActive>50</maxActive>
                         <maxWait>60000</maxWait>
                         <testOnBorrow>true</testOnBorrow>

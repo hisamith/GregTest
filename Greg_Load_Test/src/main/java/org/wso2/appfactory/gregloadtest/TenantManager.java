@@ -2,6 +2,7 @@ package org.wso2.appfactory.gregloadtest;
 
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.client.ServiceClient;
+import org.apache.axis2.transport.http.HTTPConstants;
 import org.apache.axis2.transport.http.HttpTransportProperties.Authenticator;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -39,6 +40,11 @@ public class TenantManager {
 			basicAuthenticator.setPreemptiveAuthentication(true);
 			serviceClient.getOptions().setProperty(org.apache.axis2.transport.http.HTTPConstants.AUTHENTICATE, basicAuthenticator);
 			serviceClient.getOptions().setProperty(org.apache.axis2.transport.http.HTTPConstants.CHUNKED, "false");
+
+			int timeOutInMilliSeconds = 5 * 60 * 1000;
+			tenantMgtAdminServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.SO_TIMEOUT, new Integer(timeOutInMilliSeconds));
+			tenantMgtAdminServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.CONNECTION_TIMEOUT, new Integer(timeOutInMilliSeconds));
+
 
 		} catch (AxisFault axisFault) {
 			axisFault.printStackTrace();

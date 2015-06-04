@@ -65,7 +65,7 @@
             <cacheId>root@jdbc:mysql://10.100.0.101:3306/devregistry</cacheId>
     </remoteInstance>
 
-    <mount path="/_system/Development/governance" overwrite="true">
+    <mount path="/_system/Development/governance" overwrite="true" resolveLinks="false">
             <instanceId>devremoteid</instanceId>
             <targetPath>/_system/Development/governance</targetPath>
     </mount>
@@ -83,7 +83,7 @@
             <cacheId>root@jdbc:mysql://10.100.0.101:3306/testregistry</cacheId>
     </remoteInstance>
 
-    <mount path="/_system/Testing/governance" overwrite="true">
+    <mount path="/_system/Testing/governance" overwrite="true" resolveLinks="false">
             <instanceId>testsm</instanceId>
             <targetPath>/_system/Testing/governance</targetPath>
     </mount>
@@ -101,7 +101,7 @@
             <cacheId>root@jdbc:mysql://10.100.0.101:3306/prodregistry</cacheId>
     </remoteInstance>
 
-    <mount path="/_system/Production/governance" overwrite="true">
+    <mount path="/_system/Production/governance" overwrite="true" resolveLinks="false">
             <instanceId>prodsm</instanceId>
             <targetPath>/_system/Production/governance</targetPath>
     </mount>
@@ -344,7 +344,7 @@
 		
     <indexingConfiguration>
         <startingDelayInSeconds>60</startingDelayInSeconds>
-        <indexingFrequencyInSeconds>5</indexingFrequencyInSeconds>
+        <indexingFrequencyInSeconds>600</indexingFrequencyInSeconds>
         <!--number of resources submit for given indexing thread -->
         <batchSize>50</batchSize>
          <!--number of worker threads for indexing -->

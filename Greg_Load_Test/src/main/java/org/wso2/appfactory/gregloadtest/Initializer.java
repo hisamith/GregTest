@@ -31,6 +31,7 @@ public class Initializer {
 					tenantManager.createTenant(bean);
 				} catch (Exception e){
 					Thread.sleep(tenant_create_sleep_time);
+					e.printStackTrace();
 					try {
 						tenantManager.createTenant(bean);
 					} catch (Exception e1){
@@ -42,14 +43,38 @@ public class Initializer {
 						}
 					}
 				}
-
 				Thread.sleep(tenant_create_sleep_time);
 			}
 
 			for (int i = tenant_domain_postfix_start_number; i < tenant_domain_postfix_end_number; i++) {
 				for (int j = application_postfix_start_number; j < application_postfix_end_number; j++) {
-					applicationManager.createApplication(getTenantDomain(i) + "_" + reader.getProperty("application_key_prefix") + j,
-					                                     getTenantDomain(i));
+					try {
+						applicationManager.createApplication(
+								getTenantDomain(i) + "_" + reader.getProperty("application_key_prefix") + j,
+								getTenantDomain(i));
+					} catch (Exception e){
+						Thread.sleep(application_create_sleep_time);
+						e.printStackTrace();
+						try {
+							applicationManager.createApplication(
+									getTenantDomain(i) + "_" + reader.getProperty("application_key_prefix") + j,
+									getTenantDomain(i));
+						} catch (Exception e1){
+							Thread.sleep(application_create_sleep_time);
+							e1.printStackTrace();
+							try {
+								applicationManager.createApplication(
+										getTenantDomain(i) + "_" + reader.getProperty("application_key_prefix") + j,
+										getTenantDomain(i));
+							} catch (Exception e2){
+								Thread.sleep(application_create_sleep_time);
+								e2.printStackTrace();
+								applicationManager.createApplication(
+										getTenantDomain(i) + "_" + reader.getProperty("application_key_prefix") + j,
+										getTenantDomain(i));
+							}
+						}
+					}
 				}
 				Thread.sleep(application_create_sleep_time);
 			}

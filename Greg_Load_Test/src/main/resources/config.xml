@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Config>
     <greg_url>https://localhost:9443</greg_url>
-    <no_of_tenants>100</no_of_tenants>
+    <no_of_tenants>7</no_of_tenants>
+    <tenant_domain_postfix_start_number>4</tenant_domain_postfix_start_number>
     <tenant_domain_prefix>perf_</tenant_domain_prefix>
     <tenant_admin_name>admin</tenant_admin_name>
     <tenant_admin_password>password</tenant_admin_password>
@@ -19,10 +20,9 @@
     <application_type>war</application_type>
     <application_repo_accecibility>true</application_repo_accecibility>
     <application_repo_type>git</application_repo_type>
-    <tenant_domain_postfix_start_number>1</tenant_domain_postfix_start_number>
     <application_postfix_start_number>1</application_postfix_start_number>
     <webappname>javaapp11-default-SNAPSHOT</webappname>
-    <no_of_tenants_to_load>20</no_of_tenants_to_load>
+    <no_of_tenants_to_load>10</no_of_tenants_to_load>
     <tenant_create_sleep_time>30000</tenant_create_sleep_time>
     <application_create_sleep_time>10000</application_create_sleep_time>
     <tenant_load_sleep_time>10000</tenant_load_sleep_time>
