@@ -1,6 +1,6 @@
 #!/bin/bash
-WEBAPP_SRC=/home/samith/WSO2/AppFactory/performance/danushka/wso2greg-4.6.0/repository/resources/tenantwebapps/javaapp11-default-SNAPSHOT.war
-DESTINATION_DIR=/home/samith/WSO2/AppFactory/performance/danushka/wso2greg-4.6.0/repository/tenants
+WEBAPP_SRC=/home/samith/WSO2/AppFactory/performance/fork/wso2greg-4.6.0/repository/resources/tenantwebapps/javaapp11-default-SNAPSHOT.war
+DESTINATION_DIR=/home/samith/WSO2/AppFactory/performance/fork/wso2greg-4.6.0/repository/tenants
 NUM_OF_TENANTS=2000
 RESET_CLR='\033[00;00m'
 RED="\033[33;31m"

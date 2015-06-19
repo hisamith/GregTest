@@ -13,6 +13,7 @@ import java.io.IOException;
  */
 public class Client {
 
+	public static final int NUM_OF_APPS_TO_IGNORE_FOR_CACHED = 2;
 	private static ConfigReader reader = ConfigReader.getInstance();
 	public static void main(String[] args){
 		final Log log = LogFactory.getLog(Client.class);
@@ -63,37 +64,58 @@ public class Client {
 			long afterCachedTimeForGetArtifact = 0;
 			long afterCachedTimeForGetAttribute = 0;
 
-			for (int i = tenant_domain_postfix_start_number; i < tenant_domain_to_load_postfix_end_number; i++) {
-				log.info("Getting Artifacts of tenant: "+i);
-				for (int j = application_postfix_start_number; j < application_postfix_end_number; j++) {
-					String applicationKey = Initializer.getTenantDomain(i) + "_" + reader.getProperty("application_key_prefix") + j;
+			for (int tenantId = tenant_domain_postfix_start_number; tenantId < tenant_domain_to_load_postfix_end_number; tenantId++) {
+				log.info("Getting Artifacts of tenant: "+tenantId);
+				for (int appId = application_postfix_start_number; appId < application_postfix_end_number; appId++) {
+					String applicationKey = Initializer.getTenantDomain(tenantId) + "_" + reader.getProperty("application_key_prefix") + appId;
 					String result;
 					try {
-						result = applicationManager.getArtifact(applicationKey, Initializer.getTenantDomain(i));
+						result = applicationManager.getArtifact(applicationKey, Initializer.getTenantDomain(tenantId));
 					} catch (Exception e){
 						try {
-							result = applicationManager.getArtifact(applicationKey, Initializer.getTenantDomain(i));
+							result = applicationManager.getArtifact(applicationKey, Initializer.getTenantDomain(tenantId));
 						} catch (Exception e2){
-							result = applicationManager.getArtifact(applicationKey, Initializer.getTenantDomain(i));
+							result = applicationManager.getArtifact(applicationKey, Initializer.getTenantDomain(tenantId));
 						}
 					}
 					String[] resultArr = result.split(",");
 					timeForGetArtifact += Long.parseLong(resultArr[0]);
 					timeForGetAttribute += Long.parseLong(resultArr[1]);
+
+					// Calculating time ignoring first 2 artifact retrieving time to get time without cache
+					if(no_of_applications > NUM_OF_APPS_TO_IGNORE_FOR_CACHED &&
+					   ( (appId - application_postfix_start_number) > (NUM_OF_APPS_TO_IGNORE_FOR_CACHED -1) ) ) {
+						afterCachedTimeForGetArtifact += Long.parseLong(resultArr[0]);
+						afterCachedTimeForGetAttribute += Long.parseLong(resultArr[1]);
+					} else {
+						log.info("Ignoring time to get artifact for artifact id: "+appId+
+						         " value:"+ Long.parseLong(resultArr[0])+" for cached output");
+					}
 				}
 			}
 
-			timeForGetArtifact = timeForGetArtifact/(no_of_tenants_to_load*no_of_applications);
-			timeForGetAttribute = timeForGetAttribute/(no_of_tenants_to_load*no_of_applications);
+			timeForGetArtifact = avgWithCachedResults(no_of_tenants_to_load, no_of_applications, timeForGetArtifact);
+			timeForGetAttribute = avgWithCachedResults(no_of_tenants_to_load, no_of_applications, timeForGetAttribute);
+
+			// Calculating time ignoring first 2 artifact retrieving time to get time without cache
+			if (no_of_applications > NUM_OF_APPS_TO_IGNORE_FOR_CACHED) {
+				afterCachedTimeForGetArtifact = avgIgnoringCachedResults(no_of_tenants_to_load, no_of_applications, afterCachedTimeForGetArtifact);
+				afterCachedTimeForGetAttribute = avgIgnoringCachedResults(no_of_tenants_to_load, no_of_applications, afterCachedTimeForGetAttribute);
+			}
 
 			log.info("############################################\n");
 			log.info("Time to get artifact : " + timeForGetArtifact);
 			log.info("Time to get artifact attribute : " + timeForGetAttribute);
+			log.info("Time to get artifact(Removing cached) : " + afterCachedTimeForGetArtifact);
+			log.info("Time to get artifact attribute(Removing cached) : " + afterCachedTimeForGetAttribute);
 			log.info("********************* END *********************  ");
 			try {
 				CSVWriter out = new CSVWriter(new BufferedWriter(new FileWriter(outputFile, true)));
 				String[] results = {String.valueOf(no_of_tenants_to_load), String.valueOf(no_of_applications),
-				                    String.valueOf(timeForGetArtifact), String.valueOf(timeForGetAttribute)};
+				                    String.valueOf(timeForGetArtifact), String.valueOf(timeForGetAttribute),
+				                    String.valueOf(afterCachedTimeForGetArtifact), String.valueOf(afterCachedTimeForGetAttribute)
+
+				};
 				out.writeNext(results);
 				out.close();
 			} catch (IOException e) {
@@ -104,5 +126,16 @@ public class Client {
 		} catch (Exception e){
 			log.error("Exception occurred while executing",e);
 		}
+	}
+
+	private static long avgWithCachedResults(int no_of_tenants_to_load, int no_of_applications,
+	                                         long timeForGetArtifact) {
+		return timeForGetArtifact / (no_of_tenants_to_load * no_of_applications);
+	}
+
+	private static long avgIgnoringCachedResults(int no_of_tenants_to_load, int no_of_applications,
+	                                             long afterCachedTimeForGetArtifact) {
+		return afterCachedTimeForGetArtifact /
+                (no_of_tenants_to_load * (no_of_applications - NUM_OF_APPS_TO_IGNORE_FOR_CACHED));
 	}
 }

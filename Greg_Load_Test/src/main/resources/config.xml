@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Config>
     <greg_url>https://localhost:9443</greg_url>
-    <no_of_tenants>2000</no_of_tenants>
-    <tenant_domain_postfix_start_number>1</tenant_domain_postfix_start_number>
+    <no_of_tenants>50</no_of_tenants>
+    <tenant_domain_postfix_start_number>51</tenant_domain_postfix_start_number>
     <tenant_domain_prefix>perf_</tenant_domain_prefix>
     <tenant_admin_name>admin</tenant_admin_name>
     <tenant_admin_password>password</tenant_admin_password>
@@ -13,7 +13,7 @@
     <rxt_name>application</rxt_name>
     <system_admin_username>admin</system_admin_username>
     <system_admin_password>admin</system_admin_password>
-    <jksLocation>/home/samith/WSO2/AppFactory/performance/danushka/GregTest/Greg_Load_Test/src/main/resources/wso2carbon.jks</jksLocation>
+    <jksLocation>/home/samith/WSO2/AppFactory/performance/fork/GregTest/Greg_Load_Test/src/main/resources/wso2carbon.jks</jksLocation>
     <jkspassword>wso2carbon</jkspassword>
     <application_key_prefix>perfapp_</application_key_prefix>
     <application_desc>Performance test application</application_desc>
@@ -26,5 +26,5 @@
     <tenant_create_sleep_time>30000</tenant_create_sleep_time>
     <application_create_sleep_time>10000</application_create_sleep_time>
     <tenant_load_sleep_time>10000</tenant_load_sleep_time>
-    <output_csv_file>/home/samith/WSO2/AppFactory/performance/danushka/results/output/result.csv</output_csv_file>
+    <output_csv_file>/home/samith/WSO2/AppFactory/performance/fork/results/output/result.csv</output_csv_file>
 </Config>
