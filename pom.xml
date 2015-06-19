@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.wso2.appfactory</groupId>
+    <artifactId>org.wso2.appfactory.greg.performance</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>AF Performance Test - GREG</name>
+    <description>AF Performance Test - GREG</description>
+    <modules>
+        <module>GregWebServices</module>
+        <module>GregWebServiceStub</module>
+        <module>Greg_Load_Test</module>
+    </modules>
+</project>
